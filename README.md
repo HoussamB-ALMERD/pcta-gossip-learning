@@ -26,9 +26,10 @@ src/
   analyze_v2.py           per-tier tables (mean, 95% CI, AUROC, Byzantine mass, FPR/TPR)
   sig_tests_v2.py         paired significance tests
   make_paper_tables_v2.py / make_paper_figures_v2.py   every table and figure of the article
+  make_sensitivity_B.py   Tier B paired tests and the sensitivity table (alpha and f sweep)
 results/
   runs/                   one JSON per run (final metrics, accuracy log, configuration)
-  tables/                 aggregated tables (tierA/C/D .csv/.md, significance.md)
+  tables/                 aggregated tables (tierA/B/C/D .csv/.md, significance.md, significance_B.md)
 manifests/                SHA-256 manifests of the frozen design (v2) and of v2.1 (baseline fixes)
 ```
 
@@ -39,15 +40,17 @@ Python 3.11, PyTorch 2.1 (CUDA recommended). Install the dependencies with `pip 
 ```bash
 cd src
 export PCTA_DATA_ROOT=/path/to/data_cache     # CIFAR-10 / Fashion-MNIST are downloaded here
-python run_all_v2.py --tiers A,C,D --dry-run  # run counts and time estimate
+python run_all_v2.py --tiers A,B,C,D --dry-run  # run counts and time estimate
 python -u run_all_v2.py --tiers A             # resumable; writes results_v2/
 python analyze_v2.py results_v2
 python sig_tests_v2.py
 python make_paper_tables_v2.py
 python make_paper_figures_v2.py
+mkdir -p results_v2/_tables_withB && python analyze_v2.py results_v2 results_v2/_tables_withB
+python make_sensitivity_B.py                  # Tier B tests + sensitivity table
 ```
 
-A run with N = 100 nodes and T = 40 rounds takes roughly 5-6 minutes on a single consumer GPU. Tier A has 726 runs.
+A run with N = 100 nodes and T = 40 rounds takes roughly 5-6 minutes on a single consumer GPU. Tier A has 726 runs, Tier B 660, Tier C 150 and Tier D 102 (all included in `results/runs/`).
 
 ## Notes on protocol
 
