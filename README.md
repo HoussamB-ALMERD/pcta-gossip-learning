@@ -1,6 +1,6 @@
 # PCTA: Two-Channel Sequential Trust for Byzantine-Resilient Gossip Learning
 
-Code and results for the article *"Byzantine-Resilient Decentralized Gossip Learning via Two-Channel Sequential Trust and Bounded-Leverage Mixing"* by H. Bouardi, S. Hraoui and H. El Fadili (LIASSE Laboratory, ENSA Fez, Sidi Mohamed Ben Abdellah University). The article is under review.
+Code and results for the article *"Byzantine-Resilient Decentralized Gossip Learning via Two-Channel Sequential Trust and Bounded-Leverage Mixing"* by H. Bouardi, S. Hraoui, H. El Fadili (LIASSE Laboratory, ENSA Fez, Sidi Mohamed Ben Abdellah University, Morocco), C. Esposito and B. Boi (Department of Computer Science, University of Salerno, Italy). The article is under review.
 
 PCTA (Predictive-Corrective Trust Architecture) is a defense that every node of a decentralized gossip-learning network runs on its own. For each neighbor it combines two kinds of evidence:
 
